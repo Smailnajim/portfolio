@@ -1121,6 +1121,24 @@
 											"height": 13,
 											"text": "+description: string",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGaNCgc7JHd5Qs=",
+											"_parent": {
+												"$ref": "AAAAAAGaJbyeJB1xYkU="
+											},
+											"model": {
+												"$ref": "AAAAAAGaNCgc35HapAo="
+											},
+											"font": "Arial;13;0",
+											"parentStyle": true,
+											"left": 861,
+											"top": 890,
+											"width": 110.4716796875,
+											"height": 13,
+											"text": "+userId: int",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
@@ -1128,7 +1146,7 @@
 									"left": 856,
 									"top": 825,
 									"width": 120.4716796875,
-									"height": 68
+									"height": 83
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -1142,7 +1160,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 856,
-									"top": 893,
+									"top": 908,
 									"width": 120.4716796875,
 									"height": 10
 								},
@@ -1187,7 +1205,7 @@
 							"left": 856,
 							"top": 800,
 							"width": 119.4716796875,
-							"height": 103,
+							"height": 118,
 							"nameCompartment": {
 								"$ref": "AAAAAAGaJbyeJB1s9EM="
 							},
@@ -3400,8 +3418,8 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 999,
-									"top": 729,
+									"left": 1003,
+									"top": 730,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -3422,8 +3440,8 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 988,
-									"top": 719,
+									"left": 992,
+									"top": 720,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -3444,8 +3462,8 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1022,
-									"top": 750,
+									"left": 1026,
+									"top": 749,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -3466,7 +3484,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 969,
+									"left": 974,
 									"top": 763,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -3488,7 +3506,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 961,
+									"left": 965,
 									"top": 753,
 									"height": 13,
 									"alpha": 0.7853981633974483,
@@ -3510,7 +3528,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 986,
+									"left": 991,
 									"top": 785,
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -3532,7 +3550,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1031,
+									"left": 1033,
 									"top": 696,
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -3553,8 +3571,8 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1020,
-									"top": 688,
+									"left": 1022,
+									"top": 689,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -3574,7 +3592,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1054,
+									"left": 1056,
 									"top": 711,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -3627,7 +3645,7 @@
 								"$ref": "AAAAAAGaJbyeJB1rlHI="
 							},
 							"lineStyle": 1,
-							"points": "963:799;1060:693",
+							"points": "968:799;1062:693",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGaJfROSVcyysM="
@@ -4252,6 +4270,15 @@
 							},
 							"name": "description",
 							"type": "string"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGaNCgc35HapAo=",
+							"_parent": {
+								"$ref": "AAAAAAGaJbyeIx1ptQw="
+							},
+							"name": "userId",
+							"type": "int"
 						}
 					]
 				},

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Créez un système back-end central (Backend) pour gérer votre site Web de portfolio personnel de manière moderne et facile à entretenir.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --watch src --respawn src/index.ts"
@@ -14,7 +15,6 @@
   "keywords": [],
   "author": ".l3",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/Smailnajim/portfolio/issues"
   },
@@ -22,9 +22,12 @@
   "dependencies": {
     "@apollo/server": "^5.1.0",
     "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "graphql": "^16.11.0",
     "install": "^0.13.0",
+    "mongoose": "^8.19.2",
     "npm": "^11.6.2"
   },
   "devDependencies": {
