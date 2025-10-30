@@ -1,10 +1,12 @@
 import express from 'express';
-import mongoose from "mongoose";
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import cors from 'cors';
 import dotenv from "dotenv";
 dotenv.config();
+
+import typeDefs from "./schema/typeDefs.ts";
+import resolvers from "./Resolvers/index.ts";
 
 const app = express();
 
@@ -14,16 +16,8 @@ app.use(express.json());
 
 // Apollo Server setup
 const server = new ApolloServer({
-    typeDefs: `
-    type Query {
-    hello: String
-    }
-`, 
-resolvers: {
-        Query: {
-            hello: () => 'Hello World!'
-        }
-    }
+    typeDefs: typeDefs, 
+    resolvers: resolvers
 });
 
 // Start the server
@@ -33,7 +27,7 @@ async function startServer() {
     // Apply Apollo middleware to Express
     app.use('/graphql', expressMiddleware(server));
 
-    const PORT = process.env.PORT || 4000;
+    const PORT = process.env.PORT || 4001;
     app.listen(PORT, () => {
         console.log(`Server running at http://localhost:${PORT}/graphql`);
     });
