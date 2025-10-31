@@ -1,4 +1,5 @@
 import {Types, model, Schema} from 'mongoose';
+// const {Types, model, Schema} = require('mongoose');
 
 const competenceSchema = new Schema({
     userId: {type: Types.ObjectId, ref: 'User', required: true},
@@ -8,3 +9,4 @@ const competenceSchema = new Schema({
 
 const Competence = model("Competence", competenceSchema);
 export default Competence;
+// module.exports = Competence;

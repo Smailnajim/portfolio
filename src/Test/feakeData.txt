@@ -1,0 +1,152 @@
+
+// 1) Users
+const usersResult = db.users.insertMany([
+    {
+        role: "admin",
+        firstName: "Alice",
+        lastName: "Johnson",
+        email: "alice.johnson@example.com",
+        password: "Password123!",
+        phone: "+1 202-555-0101",
+        bio: "Building tools for creators.",
+        reseauxSociaux: [
+            { platform: "LinkedIn", link: "https://www.linkedin.com/in/alice-johnson" },
+            { platform: "GitHub", link: "https://github.com/alicej" }
+        ]
+    },
+    {
+        role: "guest",
+        firstName: "Bob",
+        lastName: "Martin",
+        email: "bob.martin@example.com",
+        password: "Password123!",
+        phone: "+1 202-555-0102",
+        bio: "Tech enthusiast and writer.",
+        reseauxSociaux: [{ platform: "Twitter", link: "https://twitter.com/bobmartin" }]
+    },
+    {
+        role: "guest",
+        firstName: "Carla",
+        lastName: "Diaz",
+        email: "carla.diaz@example.com",
+        password: "Password123!",
+        phone: "+34 600 123 456",
+        bio: "Data viz hobbyist.",
+        reseauxSociaux: [{ platform: "Instagram", link: "https://instagram.com/carla_d" }]
+    }
+]);
+
+const [aliceId, bobId, carlaId] = Object.values(usersResult.insertedIds);
+
+// 2) Competences (refs User)
+const competencesResult = db.competences.insertMany([
+    { userId: aliceId, name: "JavaScript", level: "expert" },
+    { userId: aliceId, name: "Node.js", level: "advanced" },
+    { userId: bobId, name: "React", level: "intermediate" },
+    { userId: carlaId, name: "Data Visualization", level: "advanced" }
+]);
+
+const compIds = Object.values(competencesResult.insertedIds);
+const [jsCompId, nodeCompId, reactCompId, datavizCompId] = compIds;
+
+// 3) Educations (refs User)
+db.educations.insertMany([
+    {
+        userId: aliceId,
+        institution: "MIT",
+        degree: "BSc Computer Science",
+        startDate: new Date("2015-09-01"),
+        endDate: new Date("2019-06-15"),
+        description: "Focused on distributed systems and web engineering."
+    },
+    {
+        userId: bobId,
+        institution: "Stanford University",
+        degree: "MSc Human-Computer Interaction",
+        startDate: new Date("2018-09-01"),
+        endDate: new Date("2020-06-15"),
+        description: "UX research and frontend development."
+    },
+    {
+        userId: carlaId,
+        institution: "University of Barcelona",
+        degree: "BSc Data Science",
+        startDate: new Date("2016-09-01"),
+        endDate: new Date("2020-06-15"),
+        description: "Visualization and data communication."
+    }
+]);
+
+// 4) Experiences (refs Competence)
+db.experiences.insertMany([
+    {
+        competenceId: jsCompId,
+        company: "TechFlow Inc.",
+        position: "Senior Frontend Engineer",
+        startDate: new Date("2021-01-10"),
+        endDate: null,
+        enCoure: true,
+        description: "Led migration to modern tooling and built design system."
+    },
+    {
+        competenceId: nodeCompId,
+        company: "CloudForge",
+        position: "Backend Engineer",
+        startDate: new Date("2019-03-01"),
+        endDate: new Date("2020-12-31"),
+        enCoure: false,
+        description: "Implemented REST APIs and background workers."
+    },
+    {
+        competenceId: reactCompId,
+        company: "UXWorks",
+        position: "Frontend Developer",
+        startDate: new Date("2022-05-01"),
+        endDate: null,
+        enCoure: true,
+        description: "Built dashboards and improved performance."
+    },
+    {
+        competenceId: datavizCompId,
+        company: "InsightLab",
+        position: "Data Viz Specialist",
+        startDate: new Date("2020-07-01"),
+        endDate: new Date("2022-02-28"),
+        enCoure: false,
+        description: "Created interactive visualizations for reports."
+    }
+]);
+
+// 5) Projects (refs Competence; note field is 'CompetenceId' with capital C)
+db.projects.insertMany([
+    {
+        CompetenceId: jsCompId,
+        title: "Component Library",
+        demo: "https://demo.example.com/library",
+        code: { platform: "GitHub", link: "https://github.com/example/library" },
+        description: "Reusable UI components with docs site."
+    },
+    {
+        CompetenceId: nodeCompId,
+        title: "Queue Worker",
+        demo: "",
+        code: { platform: "GitHub", link: "https://github.com/example/worker" },
+        description: "Node.js worker processing jobs from Redis."
+    },
+    {
+        CompetenceId: reactCompId,
+        title: "Analytics Dashboard",
+        demo: "https://demo.example.com/analytics",
+        code: { platform: "GitHub", link: "https://github.com/example/analytics-dashboard" },
+        description: "Real-time charts and filters."
+    },
+    {
+        CompetenceId: datavizCompId,
+        title: "Viz Gallery",
+        demo: "https://demo.example.com/viz-gallery",
+        code: { platform: "GitHub", link: "https://github.com/example/viz-gallery" },
+        description: "Curated D3 visualizations."
+    }
+]);
+
+db.users.createIndex({ email: 1 }, { unique: true });

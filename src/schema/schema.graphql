@@ -1,3 +1,4 @@
+
 enum Role{
     admin
     guest
@@ -42,13 +43,9 @@ type User {
     firstName: String!
     lastName: String!
     email: String!
-    password: String!
     phone: String
     bio: String
-    reseauxSociaux: [{
-        platform: String!
-        link: String!
-    }]
+    reseauxSociaux: [SocialLink!]
 }
 
 input CompetenceInput {
@@ -60,8 +57,8 @@ input EducationInput {
     userId: ID!
     institution: String!
     degree: String!
-    startDate: Date!
-    endDate: Date
+    startDate: String!
+    endDate: String
     description: String
 }
 input ExperienceInput {
@@ -78,10 +75,7 @@ input ProjectInput {
     title: String!
     description: String!
     demo: String!
-    code: [{
-    platform: String!
-    link: String!
-    }]
+    code: CodeLinkInput!
 }
 input UserInput {
     role: Role!
@@ -91,12 +85,24 @@ input UserInput {
     password: String!
     phone: String
     bio: String
-    reseauxSociaux: [{
-        platform: String!
-        link: String!
-    }]
+    reseauxSociaux: [SocialLinkInput!]
 }
 
+# Supporting object types
+type SocialLink {
+    platform: String!
+    link: String!
+}
+
+input SocialLinkInput {
+    platform: String!
+    link: String!
+}
+
+input CodeLinkInput {
+    platform: String!
+    link: String!
+}
 type Query {
     getUser(id: ID!): User
     getAllUsers: [User!]!

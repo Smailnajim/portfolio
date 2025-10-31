@@ -1,4 +1,5 @@
 import {Types, Schema, model} from 'mongoose';
+// const {Types, model, Schema} = require('mongoose');
 
 const userSchema = new Schema({
     role: {type: String, enum: ['admin', 'guest'], required: true},
@@ -16,3 +17,4 @@ const userSchema = new Schema({
 
 const User = model("User", userSchema);
 export default User;
+// module.exports = User;

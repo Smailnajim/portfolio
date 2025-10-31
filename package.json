@@ -1,40 +1,24 @@
 {
-  "name": "portfolio",
+  "name": "nouveau-dossie_r",
   "version": "1.0.0",
-  "description": "Créez un système back-end central (Backend) pour gérer votre site Web de portfolio personnel de manière moderne et facile à entretenir.",
+  "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev --transpile-only --respawn src/index.ts"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Smailnajim/portfolio.git"
+    "compile": "tsc",
+    "start": "npm run compile && node ./dist/index.js"
   },
   "keywords": [],
-  "author": ".l3",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Smailnajim/portfolio/issues"
-  },
-  "homepage": "https://github.com/Smailnajim/portfolio#readme",
   "dependencies": {
     "@apollo/server": "^5.1.0",
-    "@types/cors": "^2.8.19",
-    "body-parser": "^2.2.0",
-    "cors": "^2.8.5",
     "dotenv": "^17.2.3",
-    "express": "^5.1.0",
     "graphql": "^16.11.0",
-    "install": "^0.13.0",
-    "mongoose": "^8.19.2",
-    "npm": "^11.6.2"
+    "mongoose": "^8.19.2"
   },
   "devDependencies": {
-    "@types/express": "^5.0.5",
     "@types/node": "^24.9.2",
-    "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.3"
   }
 }

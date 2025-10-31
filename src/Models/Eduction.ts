@@ -1,4 +1,5 @@
 import {model, Schema, Types} from "mongoose";
+// const {Types, model, Schema} = require('mongoose');
 
 const educationSchema = new Schema({
     userId: {type: Types.ObjectId, ref: 'User', required: true},
@@ -11,3 +12,4 @@ const educationSchema = new Schema({
 
 const Education = model("Education", educationSchema);
 export default Education;
+// module.exports = Education;

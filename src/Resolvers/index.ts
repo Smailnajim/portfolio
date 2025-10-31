@@ -1,12 +1,15 @@
-import { userResolvers } from './userResolvers';
+import UserResolvers  from './UserResolvers.js';
+// const userResolvers = require('./UserResolvers');
 
 const resolvers = {
     Query: {
-        ...userResolvers.Query,
+        ...UserResolvers.Query,
+        
     },
     Mutation: {
-        ...userResolvers.Mutation,
+        ...UserResolvers.Mutation,
     }
 };
 
 export default resolvers;
+// module.exports = resolvers;
