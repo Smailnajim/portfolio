@@ -56,8 +56,18 @@ async function getAllProjects() {
     }
 }
 
+async function getAllCompetences() {
+    try {
+        const competences = await Competence.find();
+        return competences;
+    } catch (error) {
+        throw new Error(`Error fetching competences: ${error.message}`);
+    }
+}
+
 export default {
     getPortfolio,
     getProfil,
-    getAllProjects
+    getAllProjects,
+    getAllCompetences
 };
