@@ -15,6 +15,16 @@ const UserResolvers = {
         // createUser: async (_: unknown, { input }: { input: any }) => {
         //     throw new Error('createUser not implemented yet');
         // }
+        login: async (_: unknown, { input }: { input: { email: string; password: string } }) => {
+            try {
+                const { email, password } = input;
+                console.log(email, password);
+                // return await UserService.login(email, password);
+                return { accessToken: "fake-token" };
+            } catch (error) {
+                throw new Error(`Failed to login: ${error.message}`);
+            }
+        }
     }
 };
 

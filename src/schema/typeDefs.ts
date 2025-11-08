@@ -122,6 +122,14 @@ input UserInput {
     reseauxSociaux: [SocialNetworkInput!]
 }
 
+input UserLogin {
+    email: String!
+    password: String!
+}
+type Login{
+    accessToken: String!
+}
+
 type Portfolio {
     user: User!
     competences: [Competence]
@@ -139,6 +147,7 @@ type Query {
 }
 type Mutation {
     createUser(input: UserInput!): User!
+    login(input: UserLogin!): Login!
 }
 `;
 
