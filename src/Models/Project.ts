@@ -2,7 +2,11 @@ import {Types, Schema, model} from "mongoose";
 // const {Types, model, Schema} = require('mongoose');
 
 const projectSchema = new Schema({
-    CompetenceId: {type: Types.ObjectId, ref: 'Competence', required: true},
+    CompetenceId: [{
+        type: Types.ObjectId, 
+        ref: 'Competence', 
+        required: true
+    }],
     title: {type: String, required: true},
     demo: {type: String},
     code: {

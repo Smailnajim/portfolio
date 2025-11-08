@@ -19,7 +19,7 @@ enum level{
 
 type Competence {
     id: ID!
-    userId: ID!
+    userId: [ID!]!
     name: String!
     level: String!
 }
@@ -73,7 +73,7 @@ type User {
 }
 
 input CompetenceInput {
-    userId: ID!
+    userId: [ID!]!
     name: String!
     level: String!
 }
@@ -133,8 +133,8 @@ type Portfolio {
 type Query {
     getProfil(userId: ID!): User
     getPortfolio(userId: ID!): Portfolio
-    getProjets: [Project!]!
-    getCompetences: [Competence!]!
+    getProjets(userId: ID!): [Project!]!
+    getCompetences(userId: ID!): [Competence!]!
 }
 type Mutation {
     createUser(input: UserInput!): User!
