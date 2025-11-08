@@ -33,7 +33,7 @@ type Education {
 }
 type Experience {
     id: ID!
-    competenceId: ID!
+    competenceId: [ID!]!
     company: String!
     position: String!
     startDate: String!
@@ -135,6 +135,7 @@ type Query {
     getPortfolio(userId: ID!): Portfolio
     getProjets(userId: ID!): [Project!]!
     getCompetences(userId: ID!): [Competence!]!
+    getExperiences(userId: ID!): [Experience!]!
 }
 type Mutation {
     createUser(input: UserInput!): User!

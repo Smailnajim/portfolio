@@ -34,6 +34,13 @@ const PortfolioResolver = {
             } catch (error) {
                 throw new Error(`Failed to get competences: ${error.message}`);
             }
+        },
+        getExperiences: async (_: unknown, {userId}: { userId: string }) => {
+            try {
+                return await PortfolioService.getAllExperiences(userId);
+            } catch (error) {
+                throw new Error(`Failed to get experiences: ${error.message}`);
+            }
         }
     },
     Mutation: {
