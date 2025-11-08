@@ -15,44 +15,23 @@ const PortfolioResolver = {
         getProfil: async(_: unknown, {userId}: { userId: string }) => {
             try {
                 console.log('userId\n',userId);
-                const Portfolio = await PortfolioService.getProfil(userId);
-                return {
-                    status: true,
-                    data: Portfolio
-                }
+                return await PortfolioService.getProfil(userId);
             } catch (error) {
-                return {
-                    status: false,
-                    error: error.message
-                }
+                throw new Error(`Failed to get profile: ${error.message}`);
             }
         },
         getProjets: async () => {
             try {
-                const projects = await PortfolioService.getAllProjects();
-                return {
-                    status: true,
-                    data: projects
-                }
+                return await PortfolioService.getAllProjects();
             } catch (error) {
-                return {
-                    status: false,
-                    error: error.message
-                }
+                throw new Error(`Failed to get projects: ${error.message}`);
             }
         },
         getCompetences: async () => {
             try {
-                const competences = await PortfolioService.getAllCompetences();
-                return {
-                    status: true,
-                    data: competences
-                }
+                return await PortfolioService.getAllCompetences();
             } catch (error) {
-                return {
-                    status: false,
-                    error: error.message
-                }
+                throw new Error(`Failed to get competences: ${error.message}`);
             }
         }
     },
