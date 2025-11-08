@@ -35,7 +35,7 @@ type Experience {
     position: String!
     startDate: String!
     endDate: String
-    responsibilities: [String!]!
+    responsibilities: [String!]
 }
 type Project {
     id: ID!
@@ -112,15 +112,14 @@ input UserInput {
 
 type Portfolio {
     user: User!
-    competences: [Competence!]!
+    competences: [Competence]
     education: [Education]
     experiences: [Experience]
     projects: [Project]
 }
 
 type Query {
-    getUser(id: ID!): User
-    getAllUsers: [User!]!
+    getProfil(userId: ID!): User
     getPortfolio(userId: ID!): Portfolio
 }
 type Mutation {

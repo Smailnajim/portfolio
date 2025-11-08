@@ -11,6 +11,16 @@ const PortfolioResolver = {
                     error: error.message
                 }
             }
+        },
+        getProfil: async(_: unknown, userId: string) => {
+            try {
+                return await PortfolioService.getProfil(userId);
+            } catch (error) {
+                return {
+                    status: false,
+                    error: error.message
+                }
+            }
         }
     },
     Mutation: {
