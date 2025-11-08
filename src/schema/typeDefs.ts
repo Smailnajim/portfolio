@@ -44,7 +44,7 @@ type Experience {
 }
 type Project {
     id: ID!
-    CompetenceId: ID!
+    CompetenceId: [ID!]!
     title: String!
     description: String!
     demo: String
