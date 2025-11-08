@@ -133,6 +133,7 @@ type Portfolio {
 type Query {
     getProfil(userId: ID!): User
     getPortfolio(userId: ID!): Portfolio
+    getProjets: [Project!]!
 }
 type Mutation {
     createUser(input: UserInput!): User!

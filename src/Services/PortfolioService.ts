@@ -6,38 +6,58 @@ import Project from "../Models/Project.js";
 
 async function getPortfolio(userId: string) {
 
-    const user = await User.findById(userId);
-    if (!user) {
-        throw new Error('User not found');
+    try {
+        
+        const user = await User.findById(userId);
+        if (!user) {
+            throw new Error('User not found');
+        }
+    
+        const competences = await Competence.find();
+        
+        
+        const educations = await Education.find();
+        
+        const experiences = await Experience.find();
+    
+        const projects = await Project.find();
+        console.log('experiences--------\n', experiences);
+    
+        return {
+            user,
+            competences: competences, 
+            education: educations,   
+            experiences: experiences, 
+            projects
+        };
+    } catch (error) {
+        throw new Error(error.message);
     }
-
-    const competences = await Competence.find();
-    
-    
-    const educations = await Education.find();
-    
-    const experiences = await Experience.find();
-
-    const projects = await Project.find();
-    console.log('experiences--------\n', experiences);
-
-    return {
-        user,
-        competences: competences, // TODO: Add when Competence model is ready
-        education: educations,   // TODO: Add when Education model is ready
-        experiences: experiences, // TODO: Add when Experience model is ready
-        projects     // TODO: Add when Project model is ready
-    };
 
 }
 async function getProfil(userId: string) {
-    const user = await User.findById(userId);
-    
-    console.log('user--------\n', user);
-    if (!user) throw new Error(`there is no user has id: ${userId}`);
-    return user;
+    try {
+        const user = await User.findById(userId);
+        
+        console.log('user--------\n', user);
+        if (!user) throw new Error(`there is no user has id: ${userId}`);
+        return user;
+        
+    } catch (error) {
+        throw new Error(error.message);
+    }
 }
+async function getAllProjects() {
+    try {
+        const projects = await Project.find();
+        return projects;
+    } catch (error) {
+        throw new Error(`Error fetching projects: ${error.message}`);
+    }
+}
+
 export default {
     getPortfolio,
-    getProfil
+    getProfil,
+    getAllProjects
 };

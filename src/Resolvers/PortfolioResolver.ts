@@ -22,6 +22,13 @@ const PortfolioResolver = {
                     error: error.message
                 }
             }
+        },
+        getProjets: async () => {
+            try {
+                return await PortfolioService.getAllProjects();
+            } catch (error) {
+                throw new Error(`Failed to get projects: ${error.message}`);
+            }
         }
     },
     Mutation: {
