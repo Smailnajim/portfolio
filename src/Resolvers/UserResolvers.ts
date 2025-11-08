@@ -1,6 +1,6 @@
 import UserService from '../Services/UserService.js';
-// const UserService = require('./../Services/UserService');
-// import type User from '../Types/User';
+import AuthService from '../Services/AuthService.js';
+
 const UserResolvers = {
     Query: {
         // getUser: async (_: unknown, { id }: { id: string }) => {
@@ -18,9 +18,7 @@ const UserResolvers = {
         login: async (_: unknown, { input }: { input: { email: string; password: string } }) => {
             try {
                 const { email, password } = input;
-                console.log(email, password);
-                // return await UserService.login(email, password);
-                return { accessToken: "fake-token" };
+                return await AuthService.login(email, password);
             } catch (error) {
                 throw new Error(`Failed to login: ${error.message}`);
             }
