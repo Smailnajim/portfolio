@@ -11,5 +11,6 @@ const experienceSchema = new Schema({
     description: {type: String}
 }, {collection: 'experiences', timestamps: true});
 
-export default model("Experience", experienceSchema);
+const Experience = model("Experience", experienceSchema);
+export default Experience;
 // module.exports = model("Experience", experienceSchema);

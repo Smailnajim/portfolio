@@ -2,8 +2,9 @@
 // import { join } from 'path';
 // const { readFileSync } = require('fs');
 // const { join } = require('path');
+import { gql } from 'apollo-server';
 
-const typeDefs = `
+const typeDefs = gql`
 enum Role{
     admin
     guest
@@ -42,6 +43,11 @@ type Project {
     description: String!
     link: String
 }
+type SocialNetwork {
+    platform: String!
+    link: String!
+}
+
 type User {
     id: ID!
     role: Role!
@@ -51,10 +57,7 @@ type User {
     password: String!
     phone: String
     bio: String
-    reseauxSociaux: [{
-        platform: String!
-        link: String!
-    }]
+    reseauxSociaux: [SocialNetwork!]
 }
 
 input CompetenceInput {
@@ -66,8 +69,8 @@ input EducationInput {
     userId: ID!
     institution: String!
     degree: String!
-    startDate: Date!
-    endDate: Date
+    startDate: String!
+    endDate: String
     description: String
 }
 input ExperienceInput {
@@ -79,15 +82,22 @@ input ExperienceInput {
     enCoure: Boolean
     description: String
 }
+input SocialNetworkInput {
+    platform: String!
+    link: String!
+}
+
+input CodeLinkInput {
+    platform: String!
+    link: String!
+}
+
 input ProjectInput {
     CompetenceId: ID!
     title: String!
     description: String!
     demo: String!
-    code: [{
-    platform: String!
-    link: String!
-    }]
+    code: [CodeLinkInput!]
 }
 input UserInput {
     role: Role!
@@ -97,23 +107,26 @@ input UserInput {
     password: String!
     phone: String
     bio: String
-    reseauxSociaux: [{
-        platform: String!
-        link: String!
-    }]
+    reseauxSociaux: [SocialNetworkInput!]
+}
+
+type Portfolio {
+    user: User!
+    competences: [Competence!]!
+    education: [Education]
+    experiences: [Experience]
+    projects: [Project]
 }
 
 type Query {
     getUser(id: ID!): User
-    # getAllUsers: [User!]!
+    getAllUsers: [User!]!
+    getPortfolio(userId: ID!): Portfolio
 }
 type Mutation {
-    # createUser(input: UserInput!): User!
-    # addCompetenceToUser(input: CompetenceInput): Competence!
-    # addEducationToUser(input: EducationInput): Education!
-    # addExperienceToUser(userId: ID!, company: String!, position: String!, startDate: String!, endDate: String, responsibilities: [String!]!): Experience!
-    # addProjectToUser(userId: ID!, title: String!, description: String!, link: String): Project!
-}`;
+    createUser(input: UserInput!): User!
+}
+`;
 
 export default typeDefs;
 // module.exports = typeDefs;

@@ -1,13 +1,14 @@
-import UserResolvers  from './UserResolvers.js';
-// const userResolvers = require('./UserResolvers');
+import UserResolvers from './UserResolvers.js';
+import PortfolioResolver from './PortfolioResolver.js';
 
 const resolvers = {
     Query: {
         ...UserResolvers.Query,
-        
+        ...PortfolioResolver.Query
     },
     Mutation: {
         ...UserResolvers.Mutation,
+        ...PortfolioResolver.Mutation
     }
 };
 
