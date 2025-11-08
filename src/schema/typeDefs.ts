@@ -18,6 +18,7 @@ enum level{
 }
 
 type Competence {
+    id: ID!
     userId: ID!
     name: String!
     level: String!
@@ -31,18 +32,29 @@ type Education {
     description: String!
 }
 type Experience {
+    id: ID!
+    competenceId: ID!
     company: String!
     position: String!
     startDate: String!
     endDate: String
     responsibilities: [String!]
+    enCoure: Boolean
+    description: String
 }
 type Project {
     id: ID!
+    CompetenceId: ID!
     title: String!
     description: String!
+    demo: String
+    code: CodeLink
+}
+type CodeLink {
+    platform: String
     link: String
 }
+
 type SocialNetwork {
     platform: String!
     link: String!

@@ -33,7 +33,8 @@ async function getPortfolio(userId: string) {
 async function getProfil(userId: string) {
     const user = await User.findById(userId);
     
-    if (!user) throw new Error(`there is no user has id: ${userId}`)
+    console.log('user--------\n', user);
+    if (!user) throw new Error(`there is no user has id: ${userId}`);
     return user;
 }
 export default {

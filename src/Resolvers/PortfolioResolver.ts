@@ -12,8 +12,9 @@ const PortfolioResolver = {
                 }
             }
         },
-        getProfil: async(_: unknown, userId: string) => {
+        getProfil: async(_: unknown, {userId}: { userId: string }) => {
             try {
+                console.log('userId\n',userId);
                 return await PortfolioService.getProfil(userId);
             } catch (error) {
                 return {
