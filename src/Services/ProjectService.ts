@@ -54,6 +54,18 @@ async function deleteProject(projectId: string) {
     }
 }
 
+async function getProjectById(projectId: string) {
+    try {
+        const project = await Project.findById(projectId);
+        if (!project) {
+            throw new Error('Project not found');
+        }
+        return project;
+    } catch (error) {
+        throw new Error(`Error fetching project: ${error.message}`);
+    }
+}
+
 async function getAllProjects(userId: string) {
     try {
         const competences = await Competence.find({ userId: { $in: [userId] } });
@@ -68,6 +80,7 @@ async function getAllProjects(userId: string) {
 export default {
     createProject,
     updateProject,
+    getProjectById,
     getAllProjects,
     deleteProject
 };

@@ -149,6 +149,7 @@ type Portfolio {
 type Query {
     getProfil(userId: ID!): User
     getPortfolio(userId: ID!): Portfolio
+    getProject(id: ID!): Project
     getProjets(userId: ID!): [Project!]!
     getCompetences(userId: ID!): [Competence!]!
     getExperiences(userId: ID!): [Experience!]!

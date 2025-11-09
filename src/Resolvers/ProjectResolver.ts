@@ -1,7 +1,14 @@
-import ProjectService from "../Services/ProjectService";
+import ProjectService from "../Services/ProjectService.js";
 
 const ProjectResolver = {
     Query: {
+        getProject: async (_: unknown, {id}: { id: string }) => {
+            try {
+                return await ProjectService.getProjectById(id);
+            } catch (error) {
+                throw new Error(`Failed to get project: ${error.message}`);
+            }
+        },
         getProjets: async (_: unknown, {userId}: { userId: string }) => {
             try {
                 return await ProjectService.getAllProjects(userId);
@@ -35,3 +42,6 @@ const ProjectResolver = {
         }
     }
 }
+
+
+export default ProjectResolver;

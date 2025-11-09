@@ -1,6 +1,6 @@
 import UserResolvers from './UserResolvers.js';
 import PortfolioResolver from './PortfolioResolver.js';
-import ProjectResolver from './PortfolioResolver.js';
+import ProjectResolver from './ProjectResolver.js';
 
 const resolvers = {
     Query: {
