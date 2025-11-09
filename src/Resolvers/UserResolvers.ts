@@ -29,6 +29,13 @@ const UserResolvers = {
             } catch (error) {
                 throw new Error(`Failed to register: ${error.message}`);
             }
+        },
+        updateProfil: async (_: unknown, { userId, input }: { userId: string, input: any }) => {
+            try {
+                return await UserService.updateProfil(userId, input);
+            } catch (error) {
+                throw new Error(`Failed to update profile: ${error.message}`);
+            }
         }
     }
 };

@@ -1,7 +1,6 @@
-import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import User from '../Models/User.js';
-import util from '../utils/jwt.js'
+import {generateToken} from '../utils/jwt.js'
 
 const JWT_SECRET = process.env.JWT_SECRET || 'tttO';
 
@@ -17,7 +16,7 @@ async function login(email: string, password: string) {
             throw new Error('Invalid email or password');
         }
 
-        const token = util.generateToken({
+        const token = generateToken({
             userId: user._id, 
             email: user.email, 
             role: user.role 
@@ -45,7 +44,7 @@ async function register(userData:  {role: string, firstName: string, lastName: s
 
         const savedUser = await newUser.save();
 
-        const token = util.generateToken({
+        const token = generateToken({
             userId: savedUser._id,
             email: savedUser.email,
             role: savedUser.role

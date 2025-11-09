@@ -1,7 +1,3 @@
-// import { readFileSync } from 'fs';
-// import { join } from 'path';
-// const { readFileSync } = require('fs');
-// const { join } = require('path');
 import { gql } from 'apollo-server';
 
 const typeDefs = gql`
@@ -119,6 +115,14 @@ input UserInput {
     password: String!
 }
 
+input UserUpdateInput {
+    firstName: String
+    lastName: String
+    phone: String
+    bio: String
+    reseauxSociaux: [SocialNetworkInput!]
+}
+
 input UserLogin {
     email: String!
     password: String!
@@ -146,6 +150,7 @@ type Mutation {
     createUser(input: UserInput!): User!
     login(input: UserLogin!): access!
     register(input: UserInput!): access!
+    updateProfil(userId: ID!, input: UserUpdateInput!): User!
 }
 `;
 
