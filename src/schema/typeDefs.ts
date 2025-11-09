@@ -87,10 +87,19 @@ input EducationInput {
     description: String
 }
 input ExperienceInput {
-    competenceId: ID!
+    competenceId: [ID!]!
     company: String!
     position: String!
     startDate: String!
+    endDate: String
+    enCoure: Boolean
+    description: String
+}
+
+input ExperienceUpdateInput {
+    company: String
+    position: String
+    startDate: String
     endDate: String
     enCoure: Boolean
     description: String
@@ -158,6 +167,7 @@ type Query {
     getProjets(userId: ID!): [Project!]!
     getCompetence(id: ID!): Competence
     getCompetences(userId: ID!): [Competence!]!
+    getExperience(id: ID!): Experience
     getExperiences(userId: ID!): [Experience!]!
 }
 type Mutation {
@@ -168,6 +178,9 @@ type Mutation {
     createCompetence(input: CompetenceInput!): Competence!
     updateCompetence(id: ID!, input: CompetenceUpdateInput!): Competence!
     deleteCompetence(id: ID!): Boolean!
+    createExperience(input: ExperienceInput!): Experience!
+    updateExperience(id: ID!, input: ExperienceUpdateInput!): Experience!
+    deleteExperience(id: ID!): Boolean!
     createProject(input: ProjectInput!): Project!
     updateProject(id: ID!, input: ProjectUpdateInput!): Project!
     deleteProject(id: ID!): Boolean!
