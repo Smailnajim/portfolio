@@ -117,16 +117,13 @@ input UserInput {
     lastName: String!
     email: String!
     password: String!
-    phone: String
-    bio: String
-    reseauxSociaux: [SocialNetworkInput!]
 }
 
 input UserLogin {
     email: String!
     password: String!
 }
-type Login{
+type access{
     accessToken: String!
 }
 
@@ -147,7 +144,8 @@ type Query {
 }
 type Mutation {
     createUser(input: UserInput!): User!
-    login(input: UserLogin!): Login!
+    login(input: UserLogin!): access!
+    register(input: UserInput!): access!
 }
 `;
 

@@ -22,6 +22,13 @@ const UserResolvers = {
             } catch (error) {
                 throw new Error(`Failed to login: ${error.message}`);
             }
+        },
+        register: async (_: unknown, { input }: { input: {role: string, firstName: string, lastName: string, email: string, password: string }}) => {
+            try {
+                return await AuthService.register(input);
+            } catch (error) {
+                throw new Error(`Failed to register: ${error.message}`);
+            }
         }
     }
 };
