@@ -1,5 +1,6 @@
 import UserService from '../Services/UserService.js';
 import AuthService from '../Services/AuthService.js';
+import { requireAdmin } from '../utils/auth.js';
 
 const UserResolvers = {
     Query: {
@@ -20,13 +21,9 @@ const UserResolvers = {
                 throw new Error(`Failed to register: ${error.message}`);
             }
         },
-        updateProfil: async (_: unknown, { userId, input }: { userId: string, input: any }) => {
-            try {
-                console.log('reeeeeeeeeeee');
-                return await UserService.updateProfil(userId, input);
-            } catch (error) {
-                throw new Error(`Failed to update profile: ${error.message}`);
-            }
+        updateProfil: async (_: unknown, { userId, input }: { userId: string, input: any }, { user }: any) => {
+            requireAdmin(user);
+            return await UserService.updateProfil(userId, input);
         }
     }
 };

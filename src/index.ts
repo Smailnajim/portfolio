@@ -2,6 +2,7 @@ import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 import mongoose from 'mongoose';
 import dotenv from "dotenv";
+import { getUser } from './utils/auth.js';
 dotenv.config();
 console.log('import :typeDefs from "./schema/typeDefs.js";------------------------++');
 
@@ -38,6 +39,11 @@ mongoose.connect(mongoURI)
 //  3. prepares your app to handle incoming requests
 const { url } = await startStandaloneServer(server, {
     listen: { port: 4000 },
+    context: async ({ req }) => {
+        const token = req.headers.authorization?.replace('Bearer ', '');
+        const user = getUser(token);
+        return { user };
+    }
 });
 
 console.log(`🚀  Server ready at: ${url}`);

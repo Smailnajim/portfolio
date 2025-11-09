@@ -1,4 +1,5 @@
 import CompetenceService from "../Services/CompetenceService.js";
+import { requireAdmin } from "../utils/auth.js";
 
 const CompetenceResolver = {
     Query: {
@@ -18,26 +19,17 @@ const CompetenceResolver = {
         }
     },
     Mutation: {
-        createCompetence: async (_: unknown, { input }: { input: any }) => {
-            try {
-                return await CompetenceService.createCompetence(input);
-            } catch (error) {
-                throw new Error(`Failed to create competence: ${error.message}`);
-            }
+        createCompetence: async (_: unknown, { input }: { input: any }, { user }: any) => {
+            requireAdmin(user);
+            return await CompetenceService.createCompetence(input);
         },
-        updateCompetence: async (_: unknown, { id, input }: { id: string, input: any }) => {
-            try {
-                return await CompetenceService.updateCompetence(id, input);
-            } catch (error) {
-                throw new Error(`Failed to update competence: ${error.message}`);
-            }
+        updateCompetence: async (_: unknown, { id, input }: { id: string, input: any }, { user }: any) => {
+            requireAdmin(user);
+            return await CompetenceService.updateCompetence(id, input);
         },
-        deleteCompetence: async (_: unknown, { id }: { id: string }) => {
-            try {
-                return await CompetenceService.deleteCompetence(id);
-            } catch (error) {
-                throw new Error(`Failed to delete competence: ${error.message}`);
-            }
+        deleteCompetence: async (_: unknown, { id }: { id: string }, { user }: any) => {
+            requireAdmin(user);
+            return await CompetenceService.deleteCompetence(id);
         }
     }
 }

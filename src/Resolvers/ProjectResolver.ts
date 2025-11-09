@@ -1,4 +1,5 @@
 import ProjectService from "../Services/ProjectService.js";
+import { requireAdmin } from "../utils/auth.js";
 
 const ProjectResolver = {
     Query: {
@@ -18,27 +19,17 @@ const ProjectResolver = {
         }
     },
     Mutation: {
-        createProject: async (_: unknown, { input }: { input: any }) => {
-            try {
-                return await ProjectService.createProject(input);
-            } catch (error) {
-                throw new Error(`Failed to create project: ${error.message}`);
-            }
+        createProject: async (_: unknown, { input }: { input: any }, { user }: any) => {
+            requireAdmin(user);
+            return await ProjectService.createProject(input);
         },
-        updateProject: async (_: unknown, { id, input }: { id: string, input: any }) => {
-            try {
-                console.log(id, input);
-                return await ProjectService.updateProject(id, input);
-            } catch (error) {
-                throw new Error(`Failed to update project: ${error.message}`);
-            }
+        updateProject: async (_: unknown, { id, input }: { id: string, input: any }, { user }: any) => {
+            requireAdmin(user);
+            return await ProjectService.updateProject(id, input);
         },
-        deleteProject: async (_: unknown, { id }: { id: string }) => {
-            try {
-                return await ProjectService.deleteProject(id);
-            } catch (error) {
-                throw new Error(`Failed to delete project: ${error.message}`);
-            }
+        deleteProject: async (_: unknown, { id }: { id: string }, { user }: any) => {
+            requireAdmin(user);
+            return await ProjectService.deleteProject(id);
         }
     }
 }
