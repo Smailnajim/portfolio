@@ -47,16 +47,6 @@ async function getProfil(userId: string) {
         throw new Error(error.message);
     }
 }
-async function getAllProjects(userId: string) {
-    try {
-        const competences = await Competence.find({ userId: { $in: [userId] } });
-        const competenceIds = competences.map(comp => comp._id.toString());
-        const projects = await Project.find({ CompetenceId: { $in: competenceIds } });
-        return projects;
-    } catch (error) {
-        throw new Error(`Error fetching projects: ${error.message}`);
-    }
-}
 
 async function getAllCompetences(userId: string) {
     try {
@@ -82,7 +72,6 @@ async function getAllExperiences(userId: string) {
 export default {
     getPortfolio,
     getProfil,
-    getAllProjects,
     getAllCompetences,
     getAllExperiences
 };

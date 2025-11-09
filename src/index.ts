@@ -14,7 +14,7 @@ import resolvers from "./Resolvers/index.js";
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
 
-// console.log('const server = new ApolloServer(------------------------++');
+console.log('------------------------++');
 const server = new ApolloServer({
     typeDefs,
     resolvers,

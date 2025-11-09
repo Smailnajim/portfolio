@@ -20,13 +20,6 @@ const PortfolioResolver = {
                 throw new Error(`Failed to get profile: ${error.message}`);
             }
         },
-        getProjets: async (_: unknown, {userId}: { userId: string }) => {
-            try {
-                return await PortfolioService.getAllProjects(userId);
-            } catch (error) {
-                throw new Error(`Failed to get projects: ${error.message}`);
-            }
-        },
         getCompetences: async (_: unknown, {userId}: { userId: string }) => {
             try {
                 console.log('eee', userId);

@@ -101,11 +101,18 @@ input CodeLinkInput {
 }
 
 input ProjectInput {
-    CompetenceId: ID!
+    CompetenceId: [ID!]!
     title: String!
     description: String!
-    demo: String!
-    code: [CodeLinkInput!]
+    demo: String
+    code: CodeLinkInput
+}
+
+input ProjectUpdateInput {
+    title: String
+    description: String
+    demo: String
+    code: CodeLinkInput
 }
 input UserInput {
     role: Role!
@@ -151,6 +158,9 @@ type Mutation {
     login(input: UserLogin!): access!
     register(input: UserInput!): access!
     updateProfil(userId: ID!, input: UserUpdateInput!): User!
+    createProject(input: ProjectInput!): Project!
+    updateProject(id: ID!, input: ProjectUpdateInput!): Project!
+    deleteProject(id: ID!): Boolean!
 }
 `;
 
