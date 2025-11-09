@@ -73,6 +73,11 @@ input CompetenceInput {
     name: String!
     level: String!
 }
+
+input CompetenceUpdateInput {
+    name: String
+    level: String
+}
 input EducationInput {
     userId: ID!
     institution: String!
@@ -151,6 +156,7 @@ type Query {
     getPortfolio(userId: ID!): Portfolio
     getProject(id: ID!): Project
     getProjets(userId: ID!): [Project!]!
+    getCompetence(id: ID!): Competence
     getCompetences(userId: ID!): [Competence!]!
     getExperiences(userId: ID!): [Experience!]!
 }
@@ -159,6 +165,9 @@ type Mutation {
     login(input: UserLogin!): access!
     register(input: UserInput!): access!
     updateProfil(userId: ID!, input: UserUpdateInput!): User!
+    createCompetence(input: CompetenceInput!): Competence!
+    updateCompetence(id: ID!, input: CompetenceUpdateInput!): Competence!
+    deleteCompetence(id: ID!): Boolean!
     createProject(input: ProjectInput!): Project!
     updateProject(id: ID!, input: ProjectUpdateInput!): Project!
     deleteProject(id: ID!): Boolean!
